@@ -1,6 +1,6 @@
 {
   "name": "pl2html",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Output Patterlab patterns as plain html files",
   "bin": {
     "pl2html": "./pl2html.js"
@@ -12,7 +12,7 @@
   "dependencies": {
     "fs": "0.0.1-security",
     "glob": "^7.1.1",
-    "htmltidy": "0.0.6",
+    "htmltidy2": "^0.1.4",
     "line-number": "^0.1.0",
     "minimist": "^1.2.0"
   }
