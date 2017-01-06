@@ -18,6 +18,10 @@ if ('outdir' in argv) {
 if (!fs.existsSync(outDir)) {
   fs.mkdirSync(outDir);
 }
+var pathReplace = /\.\.\/\.\.\/(css|js|images)/g;
+if ('pathreplace' in argv) {
+  pathReplace = argv.pathreplace;
+}
 
 var cleanFile = function(fn) {
   var lineNumber = require('line-number');
@@ -37,7 +41,8 @@ var cleanFile = function(fn) {
     }
   }
   
-  return lines.join("\n");
+  var html = lines.join("\n");
+  return html.replace(pathReplace, '$1');
 };
 
 var cleanFilename = function(fn) {
