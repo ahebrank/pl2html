@@ -1,6 +1,6 @@
 {
   "name": "pl2html",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Output Patterlab patterns as plain html files",
   "bin": {
     "pl2html": "./pl2html.js"

@@ -67,7 +67,13 @@ glob(patternDir + '/*+(templates|pages)*/*.html', globOpts, function(er, files) 
     lines = cleanFile(fn);
     tidy(lines, tidyOpts, function(err, html) {
       outFile = cleanFilename(fn);
-      fs.writeFile(outDir + '/' + outFile, html);
+      if (err) {
+        console.log(err);
+        fs.writeFile(outDir + '/' + outFile, lines);
+      }
+      else {
+        fs.writeFile(outDir + '/' + outFile, html);
+      }
     });
   });
 });
