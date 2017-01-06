@@ -2,7 +2,7 @@
 
 var fs = require('fs');
 var glob = require('glob');
-var tidy = require('htmltidy').tidy;
+var tidy = require('htmltidy2').tidy;
 
 var argv = require('minimist')(process.argv.slice(2));
 
