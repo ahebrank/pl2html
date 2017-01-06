@@ -1,0 +1,15 @@
+{
+  "name": "pl2html",
+  "version": "1.0.0",
+  "description": "Output Patterlab patterns as plain html files",
+  "main": "index.js",
+  "author": "ahebrank",
+  "license": "MIT",
+  "devDependencies": {
+    "fs": "0.0.1-security",
+    "glob": "^7.1.1",
+    "htmltidy": "0.0.6",
+    "line-number": "^0.1.0",
+    "minimist": "^1.2.0"
+  }
+}
