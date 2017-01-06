@@ -1,12 +1,15 @@
+#!/usr/bin/env node
+
 var fs = require('fs');
 var glob = require('glob');
 var tidy = require('htmltidy').tidy;
 
 var argv = require('minimist')(process.argv.slice(2));
 
-var patternDir = '.';
 if ('patterndir' in argv) {
-  patternDir = argv.patterndir;
+  var patternDir = argv.patterndir;
+} else {
+  throw new Error('Need --patterndir specified.');
 }
 var outDir = './parsed';
 if ('outdir' in argv) {
@@ -18,7 +21,6 @@ if (!fs.existsSync(outDir)) {
 
 var cleanFile = function(fn) {
   var lineNumber = require('line-number');
-  var cheerio = require('cheerio');
   var fin = fs.readFileSync(fn, 'utf8');
   var start = lineNumber(fin, /Begin Pattern Lab/g);
   var end = lineNumber(fin, /End Pattern Lab/g);
