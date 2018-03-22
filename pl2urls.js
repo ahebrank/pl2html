@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var glob = require('glob');
-
+var fs = require('fs');
 var argv = require('minimist')(process.argv.slice(2));
 
 if ('patterndir' in argv) {
@@ -16,6 +16,12 @@ if ('host' in argv) {
   throw new Error('Need --host specified: URL prefix for public directory.');
 }
 
+var configFile = false;
+if ('config' in argv) {
+  if (fs.existsSync(argv.config)) {
+    configFile = argv.config;
+  }
+}
 
 var globOpts = {
   ignore: [
@@ -28,9 +34,19 @@ var cleanFilename = function(fn) {
 };
 
 var files = glob.sync(patternDir + '/*+(templates|pages)*/*.html', globOpts);
-var urls = {
-  'urls': files.map(f => {
-            return cleanFilename(f);
-          })
-};
-process.stdout.write(JSON.stringify(urls) + '\n');
+var urls = files.map(f => {
+  return cleanFilename(f);
+});
+process.stdout.write(urls.join('\n') + '\n');
+
+if (configFile) {
+  var data = fs.readFileSync(configFile);
+  var config = JSON.parse(data);  
+  if (!('urls' in config)) {
+    config.urls = [];
+  }
+  config.urls = config.urls.concat(urls);
+  config.urls = config.urls.filter((v, i, a) => a.indexOf(v) === i);
+  data = JSON.stringify(config);  
+  fs.writeFileSync(configFile, data);
+}
