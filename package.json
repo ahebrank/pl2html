@@ -1,20 +1,23 @@
 {
   "name": "pl2html",
-  "version": "1.0.5",
-  "description": "Output Patterlab patterns as plain html files",
+  "version": "1.1.0",
+  "description": "Utility functions for Patternlab exports and testing",
   "bin": {
     "pl2html": "./pl2html.js",
-    "pl2urls": "./pl2urls.js"
+    "pl2urls": "./pl2urls.js",
+    "flatten_sitemap": "./flatten_sitemap.js"
   },
   "author": "ahebrank",
   "license": "MIT",
   "homepage": "https://github.com/ahebrank/pl2html",
   "repository": "ahebrank/pl2html",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "fs": "0.0.1-security",
     "glob": "^7.1.1",
     "htmltidy2": "^0.1.4",
     "line-number": "^0.1.0",
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.0",
+    "node-fetch": "^2.1.1"
   }
 }

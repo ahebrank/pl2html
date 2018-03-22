@@ -2,3 +2,5 @@ node_modules
 parsed
 npm-debug.log
 pl
+package-lock.json
+test.json
