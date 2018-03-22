@@ -3,7 +3,8 @@
   "version": "1.0.5",
   "description": "Output Patterlab patterns as plain html files",
   "bin": {
-    "pl2html": "./pl2html.js"
+    "pl2html": "./pl2html.js",
+    "pl2urls": "./pl2urls.js"
   },
   "author": "ahebrank",
   "license": "MIT",
