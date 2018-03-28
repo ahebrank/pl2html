@@ -4,6 +4,7 @@ const fs = require('fs');
 const argv = require('minimist')(process.argv.slice(2));
 const cheerio = require('cheerio');
 const fetch = require('node-fetch');
+const shuffle = require('shuffle-array');
 
 if ('sitemap' in argv) {
     var sitemapUrl = argv.sitemap;
@@ -27,6 +28,10 @@ if ('r' in argv) {
 let limit = 0;
 if ('limit' in argv) {
     limit = argv.limit;
+}
+let randomize = false;
+if ('randomize' in argv) {
+    randomize = true;
 }
 
 function getUrls(sitemapUrl, tag = 'url', sitemapExclude = false, sitemapFind = false, sitemapReplace = false) {
@@ -81,6 +86,12 @@ Promise.resolve()
     .then(resolved => {
         // flatten
         return [].concat.apply([], resolved);
+    })
+    .then(urls => {
+        if (randomize) {
+            urls = shuffle(urls);
+        }
+        return urls;
     })
     .then(urls => {
         // optionally truncate
