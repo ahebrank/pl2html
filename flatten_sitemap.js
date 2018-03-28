@@ -24,6 +24,10 @@ let sitemapReplace = false;
 if ('r' in argv) {
     sitemapReplace = argv.r;
 }
+let limit = 0;
+if ('limit' in argv) {
+    limit = argv.limit;
+}
 
 function getUrls(sitemapUrl, tag = 'url', sitemapExclude = false, sitemapFind = false, sitemapReplace = false) {
     console.log(sitemapUrl);
@@ -77,6 +81,14 @@ Promise.resolve()
     .then(resolved => {
         // flatten
         return [].concat.apply([], resolved);
+    })
+    .then(urls => {
+        // optionally truncate
+        if (limit > 0) {
+            limit = (limit > urls.length)? urls.length : limit;
+            urls = urls.slice(0, limit + 1);
+        }
+        return urls;
     })
     .then(urls => {
         process.stdout.write(urls.join('\n') + '\n');
