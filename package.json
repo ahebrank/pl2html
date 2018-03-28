@@ -1,6 +1,6 @@
 {
   "name": "pl2html",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Utility functions for Patternlab exports and testing",
   "bin": {
     "pl2html": "./pl2html.js",
