@@ -102,6 +102,10 @@ Promise.resolve()
         return urls;
     })
     .then(urls => {
+        // clean out blanks
+        return urls.filter(i => (typeof i === 'string') && (i.startsWith('http')))
+    })
+    .then(urls => {
         process.stdout.write(urls.join('\n') + '\n');
 
         if (configFile) {
