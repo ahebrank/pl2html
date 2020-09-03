@@ -1,12 +1,11 @@
 {
   "name": "pl2html",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "Utility functions for Patternlab exports and testing",
   "bin": {
     "pl2html": "./pl2html.js",
     "pl2urls": "./pl2urls.js",
-    "pl2sitemap": "./pl2sitemap.js",
-    "flatten_sitemap": "./flatten_sitemap.js"
+    "pl2sitemap": "./pl2sitemap.js"
   },
   "author": "ahebrank",
   "license": "MIT",
@@ -21,6 +20,7 @@
     "minimist": "^1.2.0",
     "node-fetch": "^2.1.1",
     "shuffle-array": "^1.0.1",
-    "xmlbuilder": "^9.0.7"
+    "xmlbuilder": "^9.0.7",
+    "sitemap_utils": "^0.1.0"
   }
 }
