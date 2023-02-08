@@ -69,10 +69,10 @@ glob(patternDir + '/*+(templates|pages)*/*.html', globOpts, function(er, files) 
       outFile = cleanFilename(fn);
       if (err) {
         console.log(err);
-        fs.writeFile(outDir + '/' + outFile, lines);
+        fs.writeFile(outDir + '/' + outFile, lines, () => {});
       }
       else {
-        fs.writeFile(outDir + '/' + outFile, html);
+        fs.writeFile(outDir + '/' + outFile, html, () => {});
       }
     });
   });
